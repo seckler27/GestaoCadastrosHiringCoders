@@ -7,7 +7,7 @@ import Button from "../Button";
 import { StyledDiv } from "./styles";
 import { StyledDivFlex } from "./styles";
 
-class Product {
+export class Product {
     name: string;
     price: string;
     description: string;
@@ -20,7 +20,7 @@ class Product {
     }
 }
 
-function ProductForm() {
+ function ProductForm() {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
@@ -58,21 +58,21 @@ function ProductForm() {
 
     return (
         <StyledDiv className="ProductForm">
-            <StyledDiv>
+            <StyledDivFlex>
                 <Input name="Nome" placeholder="Nome" handleChange={handleNameChange} value={name} />
-            </StyledDiv>
-            <StyledDiv>
+            </StyledDivFlex>
+            <StyledDivFlex>
                 <Input name="Preço" placeholder="Preço" handleChange={handlePriceChange} value={price} />
-            </StyledDiv>
-            <StyledDiv>
+            </StyledDivFlex>
+            <StyledDivFlex>
                 <Input name="Descrção" placeholder="Descrição do produto" handleChange={handleDescriptionChange} value={description} />
-            </StyledDiv>
-            <StyledDiv>
+            </StyledDivFlex>
+            <StyledDivFlex>
                 <Input name="Quantidade" placeholder="Quantidade" handleChange={handleQuantityChange} value={quantity} />
 
-            </StyledDiv>
+            </StyledDivFlex>
             <StyledDivFlex>
-                <Button onClick={handleClick} />
+                <Button innerText="Cadastrar" onClick={handleClick} />
             </StyledDivFlex>
 
 

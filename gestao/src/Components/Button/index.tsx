@@ -2,13 +2,13 @@ import React from "react";
 import {StyledButton} from "./styles"
 
 interface IProps {
-   
-    onClick:()=>void
+    innerText: string;
+    onClick:()=>void;
 
 }
 const Button = function(props:IProps){
     return(
-        <StyledButton type="button"   onClick={props.onClick}>Cadastrar</StyledButton>
+        <StyledButton type="button"   onClick={props.onClick}>{props.innerText}</StyledButton>
     )
 }
 

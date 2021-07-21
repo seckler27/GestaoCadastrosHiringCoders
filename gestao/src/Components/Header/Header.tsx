@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { StyledHeader } from "./styles";
-import { StyledButton } from "../Button/styles";
 import MenuButton from "../MenuButton";
+import { Link } from "react-router-dom";
+
 
 
 const Header = function () {
+    
     const [showComponent, setShowComponent] = useState(false);
     const handleClick = function () {
-      showComponent? setShowComponent(false):setShowComponent(true)
-       
+        showComponent ? setShowComponent(false) : setShowComponent(true)
+
     }
 
 
@@ -21,7 +23,18 @@ const Header = function () {
                         Clientes
                     </li>
                     <li>
-                        Produtos
+                        
+                            <Link  to="/products" >
+                                Produtos
+                            </Link>
+                        
+                    </li>
+                    <li>
+                        
+                            <Link  to="/search" >
+                                Pesquisar
+                            </Link>
+                        
                     </li>
                 </menu> : null}
         </StyledHeader>
