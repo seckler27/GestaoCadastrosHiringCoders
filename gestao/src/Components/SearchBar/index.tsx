@@ -5,7 +5,7 @@ import { StyledDivFlex } from "../ProductForm/styles";
 import { getFromStorage } from "../../Utils/functions";
 import { LocalStorageKeys } from "../../Utils/storageKeys";
 import { Product } from "../ProductForm";
-import { StyledBlockDiv,  StyledTable, TableHeader, TR, TD } from "./styles";
+import { StyledBlockDiv, StyledTable, TableHeader, TR, TD } from "./styles";
 
 
 
@@ -46,29 +46,33 @@ export function SearchBar() {
     }
 
     return (
-        <StyledBlockDiv>
-                    <StyledDivFlex>
-                        <Input name="SearchBar" placeholder="Digite sua pesquisa" handleChange={handleSearch} value={searchString} />
-                    </StyledDivFlex>
-                    <StyledDivFlex>
-                        <Button innerText="Pesquisar" onClick={handleClick} />
-                    </StyledDivFlex>
-                    {
-                        showComponent ?
-                            <StyledTable>
-                                <thead>
-                                    <TR>
-                                        <TableHeader>Nome</TableHeader><TableHeader>Preço</TableHeader><TableHeader>Descrição</TableHeader><TableHeader>Quantidade</TableHeader>
-                                    </TR>
-                                </thead>
+        <div>
+            <StyledBlockDiv>
 
-                                {innerText}
-                            </StyledTable>
-                            : null
-                    }
-                    {showErrorMessage ? innerText : null}
-        </StyledBlockDiv>
+                <StyledDivFlex>
+                    <Input name="SearchBar" placeholder="Digite sua pesquisa" handleChange={handleSearch} value={searchString} />
+                </StyledDivFlex>
+                <div></div>
+                <StyledDivFlex>
+                    <Button innerText="Pesquisar" onClick={handleClick} />
+                </StyledDivFlex>
+                <div></div>
+                {
+                    showComponent ?
+                        <StyledTable>
+                            <thead>
+                                <TR>
+                                    <TableHeader>Nome</TableHeader><TableHeader>Preço</TableHeader><TableHeader>Descrição</TableHeader><TableHeader>Quantidade</TableHeader>
+                                </TR>
+                            </thead>
 
+                            {innerText}
+                        </StyledTable>
+                        : null
+                }
+                {showErrorMessage ? innerText : null}
+            </StyledBlockDiv>
+        </div>
     )
 
 }

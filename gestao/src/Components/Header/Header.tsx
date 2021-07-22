@@ -2,11 +2,12 @@ import { useState } from "react";
 import { StyledHeader } from "./styles";
 import MenuButton from "../MenuButton";
 import { Link } from "react-router-dom";
-
+import { StyledMenu } from "./styles";
+import { ButtonContainer, StyledLink } from "./styles";
 
 
 const Header = function () {
-    
+
     const [showComponent, setShowComponent] = useState(false);
     const handleClick = function () {
         showComponent ? setShowComponent(false) : setShowComponent(true)
@@ -15,28 +16,28 @@ const Header = function () {
 
 
     return (
-        <StyledHeader> <p>Cadastro e Consulta de produtos/clientes</p>
+        <StyledHeader> 
+            <p>Cadastro e Consulta de produtos/clientes</p>
+            
             <MenuButton onClick={handleClick}>Menu</MenuButton>
             {showComponent ?
-                <menu>
-                    <li>
+                <StyledMenu>
+                    <ButtonContainer>
                         Clientes
-                    </li>
-                    <li>
-                        
-                            <Link  to="/products" >
-                                Produtos
-                            </Link>
-                        
-                    </li>
-                    <li>
-                        
-                            <Link  to="/search" >
-                                Pesquisar
-                            </Link>
-                        
-                    </li>
-                </menu> : null}
+                    </ButtonContainer>
+                    <StyledLink to="/products" >
+                        <ButtonContainer>
+                            Produtos
+                        </ButtonContainer>
+                    </StyledLink>
+                    <StyledLink to="/search" >
+                        <ButtonContainer>
+                            Pesquisar
+
+                        </ButtonContainer>
+                    </StyledLink>
+
+                </StyledMenu> : null}
         </StyledHeader>
     )
 }

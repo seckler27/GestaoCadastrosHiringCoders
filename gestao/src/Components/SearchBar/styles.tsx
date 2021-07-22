@@ -11,6 +11,7 @@ export const Container = styled.div`
     margin:4px;
 `
 export const StyledTable = styled.table`
+margin:10px;
 border:5px solid black;
 width:100%
 `
