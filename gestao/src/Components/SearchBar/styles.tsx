@@ -1,27 +1,25 @@
 import styled from "styled-components";
 
-
-
 export const StyledBlockDiv = styled.div`
-display: block;
-`
-export const Container = styled.div`
-    width:100vw;
-    height: auto;
-    margin:4px;
-`
+  display: block;
+`;
+
 export const StyledTable = styled.table`
-margin:10px;
-border:5px solid black;
-width:100%
-`
+  width: 100vw;
+  height: auto;
+  margin-top: 10px;
+  border: 5px solid black;
+  width: 100%;
+`;
 export const TableHeader = styled.th`
-padding:10px;
-border: 2px solid black
-`
+  padding: 10px;
+  border: 2px solid black;
+`;
 export const TR = styled.tr`
-border: 2px solid black;
-`
+  border: 2px solid black;
+`;
 export const TD = styled.td`
-border: 2px solid black;
-`
+  padding: 20px;
+  border: 2px solid black;
+  font-size: 20px;
+`;

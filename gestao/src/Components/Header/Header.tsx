@@ -1,44 +1,42 @@
 import { useState } from "react";
-import { StyledHeader } from "./styles";
+import { StyledHeader, StyledHeaderP } from "./styles";
 import MenuButton from "../MenuButton";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { StyledMenu } from "./styles";
 import { ButtonContainer, StyledLink } from "./styles";
-
+import { StyledP } from "./styles";
 
 const Header = function () {
+  const [showComponent, setShowComponent] = useState(false);
+  const handleClick = function () {
+    showComponent ? setShowComponent(false) : setShowComponent(true);
+  };
 
-    const [showComponent, setShowComponent] = useState(false);
-    const handleClick = function () {
-        showComponent ? setShowComponent(false) : setShowComponent(true)
+  return (
+    <StyledHeader>
+      <StyledHeaderP>Cadastro e Consulta de produtos/clientes</StyledHeaderP>
 
-    }
-
-
-    return (
-        <StyledHeader> 
-            <p>Cadastro e Consulta de produtos/clientes</p>
-            
-            <MenuButton onClick={handleClick}>Menu</MenuButton>
-            {showComponent ?
-                <StyledMenu>
-                    <ButtonContainer>
-                        Clientes
-                    </ButtonContainer>
-                    <StyledLink to="/products" >
-                        <ButtonContainer>
-                            Produtos
-                        </ButtonContainer>
-                    </StyledLink>
-                    <StyledLink to="/search" >
-                        <ButtonContainer>
-                            Pesquisar
-
-                        </ButtonContainer>
-                    </StyledLink>
-
-                </StyledMenu> : null}
-        </StyledHeader>
-    )
-}
+      <MenuButton onClick={handleClick}>Menu</MenuButton>
+      {showComponent ? (
+        <StyledMenu>
+          <ButtonContainer>
+            <StyledP>
+              <StyledLink to="/customers">Clientes</StyledLink>
+            </StyledP>
+          </ButtonContainer>
+          <ButtonContainer>
+            <StyledP>
+              <StyledLink to="/products">Produtos</StyledLink>
+            </StyledP>
+          </ButtonContainer>
+          <ButtonContainer>
+            <StyledP>
+              <StyledLink to="/search">Pesquisar</StyledLink>
+            </StyledP>
+          </ButtonContainer>
+        </StyledMenu>
+      ) : null}
+    </StyledHeader>
+  );
+};
 export default Header;
