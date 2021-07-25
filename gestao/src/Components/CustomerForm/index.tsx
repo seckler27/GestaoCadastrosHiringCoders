@@ -6,8 +6,8 @@ import { LocalStorageKeys } from "../../Utils/storageKeys";
 import Button from "../Button";
 import { StyledDiv } from "./styles";
 import { StyledDivFlex } from "./styles";
-import AddressForm from "../../AddressForm";
-import { IsAddressFilled } from "../../Utils/functions";
+import AddressForm from "../AddressForm"
+import { IsAddressSaved,getAddress } from "../../Utils/functions";
 
 class Address {
   street: string;
@@ -31,21 +31,23 @@ class Address {
 }
 
 export class Customer {
-  name?: string;
-  surname?: string;
-  idNumber?: string;
-  phoneNumber?: string;
-  address?: Address;
+  name: string;
+  surname: string;
+  idNumber: string;
+  phoneNumber: string;
+  address: Address;
   constructor(
     name: string,
     surname: string,
     idNumber: string,
-    phoneNumber: string
+    phoneNumber: string,
+    address:Address
   ) {
     this.name = name;
     this.surname = surname;
     this.idNumber = idNumber;
     this.phoneNumber = phoneNumber;
+    this.address = address;
   }
 }
 export let isFilled = false;
@@ -87,17 +89,20 @@ function CustomerForm() {
   };
 
   const handleClick = function () {
-    const isSaved = IsAddressFilled();
+    const isSaved = IsAddressSaved();
     if (
-     ( (name !==initialState) ||
+     ( ((name !==initialState) ||
         (surname !==initialState) ||
         (idNumber !==initialState) ||
-        (phoneNumber !==initialState) &&
+        (phoneNumber !==initialState)) &&
         (isSaved))
     ) {
-      const customer = new Customer(name, surname, idNumber, phoneNumber);
+      const address = getAddress();
+      const customer = new Customer(name.trim(), surname, idNumber, phoneNumber,address[0]);
       addToStorage(customer, LocalStorageKeys.customers);
       resetState();
+      localStorage.removeItem(LocalStorageKeys.address)
+      alert('ok');
       
     } else {
       alert("Preencha todos os campos por favor.");

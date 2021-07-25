@@ -9,13 +9,13 @@ export const addToStorage = function (object: object, key: string) {
   fetchedArray.push(object);
   localStorage.setItem(key, JSON.stringify(fetchedArray));
 };
-export const getFromStorage = function (search: string, key: LocalStorageKeys) {
+export const getFromStorage = function ( key: LocalStorageKeys){
   const localStorageArray = localStorage.getItem(key);
   const fetchedArray = localStorageArray
     ? JSON.parse(localStorageArray)
-    : new Array<Product>();
-  const fetchedObj = fetchedArray.filter(
-    (obj: { name: string }) => obj.name === search
+    : new Array<Object>();
+  const fetchedObj = fetchedArray.map(
+    (obj:[]) => obj
   );
 
   return fetchedObj;
@@ -30,11 +30,17 @@ export function getPropNames(objArray: object[]) {
   });
   return objProps;
 }
+export function getAddress(){
+  const storedAddress = localStorage.getItem(LocalStorageKeys.address);
+      const address =  storedAddress ?JSON.parse(storedAddress):null
+      return address;
+}
 
-export function IsAddressFilled() {
-  if (((localStorage.getItem(LocalStorageKeys.address))=== null)) {
-    return false;
-  } else {
+export function IsAddressSaved() {
+    const address = getAddress();
+  if ( address !== null) {
     return true;
+  } else {
+    return false;
   }
 }

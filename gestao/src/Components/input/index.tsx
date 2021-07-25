@@ -1,10 +1,12 @@
+import { LocalStorageKeys } from "../../Utils/storageKeys";
 import { StyledInput } from "../input/styles";
 
 interface IProps {
   name: string;
-  placeholder: string;
-  value: string;
+  placeholder?: string;
+  value: string | LocalStorageKeys;
   type: string;
+  
   
   handleChange(event: React.FormEvent<HTMLInputElement>): void;
 }

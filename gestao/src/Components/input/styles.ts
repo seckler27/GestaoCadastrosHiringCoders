@@ -8,6 +8,7 @@ margin:5px;
 border-radius:15px;
 align-self:center
 transition: box-shadow.3s;
+text-transform: uppercase;
 &:hover{
 box-shadow: inset 0 0 1em black;
 }

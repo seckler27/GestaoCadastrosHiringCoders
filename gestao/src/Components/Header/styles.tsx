@@ -5,6 +5,7 @@ export const StyledHeader = styled.div`
   width: 100%;
   text-align: center;
   margin-bottom: 10px;
+
 `;
 export const StyledMenu = styled.div`
 margin-top:10px;
@@ -17,8 +18,8 @@ height 50px
 export const ButtonContainer = styled.div`
   text-align: center;
   padding: 10px;
+  background-color:gray;
   border-radius: 25px;
-  background-color: gray;
   cursor: pointer;
   transition: box-shadow.3s;
   &:hover {
@@ -27,6 +28,9 @@ export const ButtonContainer = styled.div`
 `;
 export const StyledLink = styled(NavLink)`
   text-decoration: none;
+  &:visited{
+    color:inherit;
+  }
 `;
 
 export const StyledP = styled.p`

@@ -3,6 +3,7 @@ import Header from "./Components/Header/Header";
 import { SearchBar } from "./Components/SearchBar";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CustomerForm, { Customer } from "./Components/CustomerForm";
+import { StyledDiv } from "./Components/AddressForm/styles";
 
 function App() {
   return (

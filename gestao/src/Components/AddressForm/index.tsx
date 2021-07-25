@@ -1,12 +1,12 @@
 import { type } from "os";
 import React, { useState } from "react";
-import Input from "../Components/input";
+import Input from "../input";
 import { StyledDiv } from "./styles";
 import { StyledDivFlex } from "./styles";
-import Button from "../Components/Button";
-import { StyledBlockDiv } from "../Components/SearchBar/styles";
-import { LocalStorageKeys } from "../Utils/storageKeys";
-import { addToStorage } from "../Utils/functions";
+import Button from "../Button";
+import { StyledBlockDiv } from "../SearchBar/styles";
+import { LocalStorageKeys } from "../../Utils/storageKeys";
+import { addToStorage } from "../../Utils/functions";
 
 class Address {
   zipCode: string;

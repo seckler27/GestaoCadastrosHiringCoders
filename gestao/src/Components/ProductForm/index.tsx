@@ -33,7 +33,7 @@ function ProductForm() {
   const [initialState, setInitialState] = useState("");
   const handleNameChange = function (event: React.FormEvent<HTMLInputElement>) {
     const value = event.currentTarget.value;
-    setName(value);
+    setName(value.trim());
   };
   const handlePriceChange = function (
     event: React.FormEvent<HTMLInputElement>
@@ -68,7 +68,7 @@ function ProductForm() {
     ) {
       alert("Preencha todos os campos por favor.");
     } else {
-      const product = new Product(name, price, description, quantity);
+      const product = new Product(name.trim(), price, description, quantity);
       addToStorage(product, LocalStorageKeys.products);
       resetState();
     }

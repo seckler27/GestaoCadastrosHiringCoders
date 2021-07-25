@@ -14,7 +14,7 @@ const Header = function () {
 
   return (
     <StyledHeader>
-      <StyledHeaderP>Cadastro e Consulta de produtos/clientes</StyledHeaderP>
+      <StyledHeaderP>Gestão de Cadastros</StyledHeaderP>
 
       <MenuButton onClick={handleClick}>Menu</MenuButton>
       {showComponent ? (

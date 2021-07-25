@@ -7,32 +7,67 @@ import { LocalStorageKeys } from "../../Utils/storageKeys";
 import { Product } from "../ProductForm";
 import { StyledBlockDiv, StyledTable, TableHeader, TR, TD } from "./styles";
 import { EnumType } from "typescript";
+import { Customer } from "../CustomerForm";
+import { productProps,customerProps } from "../../Utils/storageKeys";
 
 export function SearchBar() {
-  const [searchString, setSearchString] = useState("");
   const [showComponent, setShowComponent] = useState(false);
   const [innerText, setInnerText] = useState(<div></div>);
   const [showErrorMessage, setErrorMessage] = useState(false);
   const [TableHead, setTableHead] = useState(<thead></thead>);
 
-  function handleSearch(event: React.FormEvent<HTMLInputElement>): void {
-    const value = event.currentTarget.value;
-    setSearchString(value);
-  }
-  function resetState() {
-    const initialState = false;
-    setShowComponent(initialState);
-    setErrorMessage(initialState);
-  }
-
-  function handleClick() {
+  function handleCustomerButton() {
     resetState();
-    const resultArray = getFromStorage(searchString, LocalStorageKeys.products);
-    if (resultArray.length <= 0) {
+    const key = LocalStorageKeys.customers;
+    const resultArray = getFromStorage(key);
+    if (resultArray <= 0) {
       setInnerText(<div>Nenhum resultado para esta busca</div>);
       setErrorMessage(true);
     } else {
-      const objProps = getPropNames(resultArray);
+      const objProps = customerProps;
+      setTableHead(
+       <TR>
+          {objProps.map((prop) => (
+            <TableHeader>{prop.toLocaleUpperCase()}</TableHeader>
+          ))}
+        </TR>
+      );
+      setInnerText(
+        resultArray.map((result: Customer) => (
+          <tbody>
+            <TR>
+              <TD>{result.name}</TD>
+              <TD>{result.surname}</TD>
+              <TD>{result.idNumber}</TD>
+              <TD>{result.phoneNumber}</TD>
+            </TR>
+          
+          </tbody>
+        ))
+      );
+
+          setShowComponent(true);
+    }
+  }
+
+  
+
+  function resetState() {
+    const boolInitialState = false;
+
+    setShowComponent(boolInitialState);
+    setErrorMessage(boolInitialState);
+  }
+
+  function handleProductButton() {
+    resetState();
+    const key = LocalStorageKeys.products;
+    const resultArray = getFromStorage(key);
+    if (resultArray <= 0) {
+      setInnerText(<div>Nenhum resultado para esta busca</div>);
+      setErrorMessage(true);
+    } else {
+      const objProps = productProps;
       setTableHead(
         <TR>
           {objProps.map((prop) => (
@@ -45,7 +80,7 @@ export function SearchBar() {
         resultArray.map((result: Product) => (
           <tbody>
             <TR>
-              <TD>{result.name}</TD> 
+              <TD>{result.name}</TD>
               <TD>{result.price}</TD>
               <TD>{result.description}</TD>
               <TD>{result.quantity}</TD>
@@ -53,24 +88,15 @@ export function SearchBar() {
           </tbody>
         ))
       );
-      alert("tchau");
+
       setShowComponent(true);
     }
   }
-
   return (
     <StyledBlockDiv>
       <StyledDivFlex>
-        <Input
-          type="search"
-          name="SearchBar"
-          placeholder="Digite sua pesquisa"
-          handleChange={handleSearch}
-          value={searchString}
-        />
-      </StyledDivFlex>
-      <StyledDivFlex>
-        <Button innerText="Pesquisar" onClick={handleClick} />
+        <Button innerText="Clientes" onClick={handleCustomerButton}></Button>
+        <Button innerText="Produtos" onClick={handleProductButton}></Button>
       </StyledDivFlex>
       {showComponent ? (
         <StyledTable>
